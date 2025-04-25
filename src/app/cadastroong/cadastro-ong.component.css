@@ -1,0 +1,102 @@
+/* Registrar página */
+body {
+  background: linear-gradient(to bottom, #fce4ec, #fff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container do formulário de registro */
+.register-container {
+  max-width: 480px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Título do formulário */
+.register-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Estilo para o botão de envio */
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e45a4e;
+}
+
+/* Adicionando um espaçamento entre o título e os campos */
+.register-container .form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilo para os labels */
+label {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Adicionando uma borda e o foco para os campos de input */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #ff6f61;
+  box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
+}
+
+/* Estilo para o texto de ajuda (se houver) */
+small {
+  font-size: 0.9rem;
+  color: #888;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 600px) {
+  .register-container {
+    padding: 1.5rem;
+  }
+  .register-title {
+    font-size: 1.5rem;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.95rem;
+  }
+  button {
+    font-size: 1rem;
+  }
+}

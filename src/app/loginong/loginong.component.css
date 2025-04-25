@@ -1,0 +1,93 @@
+/* Fundo geral da página */
+body {
+    background: linear-gradient(to bottom, #e0f7fa, #fff);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container do login */
+  .login-container {
+    max-width: 420px;
+    margin: 5rem auto;
+    padding: 2.5rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Título */
+  .login-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Estilo dos grupos de input */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Rótulos */
+  label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  /* Campos de entrada */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #00acc1;
+    box-shadow: 0 0 5px rgba(0, 172, 193, 0.3);
+    outline: none;
+  }
+  
+  /* Botão de login */
+  button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem; /* 👉 dá espaço entre os campos e o botão */
+    background-color: #00acc1;
+    color: #fff;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.15rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  button:hover {
+    background-color: #0097a7;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 600px) {
+    .login-container {
+      padding: 2rem;
+      margin: 2rem auto;
+    }
+  
+    .login-title {
+      font-size: 1.6rem;
+    }
+  }
+  

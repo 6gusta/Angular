@@ -1,0 +1,174 @@
+/* Variáveis de cores */
+:root {
+    --accent1: #f1a7b1;
+    --accent2: #f9c3d0;
+    --primary: #ff6f61;
+    --bg-main: #fff;
+  }
+  
+  /* Body */
+  body {
+    background-color: var(--bg-main);
+    background-image: url('https://www.transparenttextures.com/patterns/paw-print.png');
+    font-family: 'Segoe UI', sans-serif;
+    animation: bgScroll 60s linear infinite;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Animação de fundo */
+  @keyframes bgScroll {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+  }
+  
+  /* Header */
+  header {
+    background: linear-gradient(to right, var(--accent1), var(--accent2));
+    padding: 3rem 1rem;
+    border-radius: 0 0 2rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  
+  /* Coração flutuante */
+  .hearts {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+  
+  .heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: floatUp 6s ease-in infinite;
+    opacity: 0.8;
+  }
+  
+  @keyframes floatUp {
+    from {
+      bottom: 0;
+      transform: translateX(0) scale(1);
+      opacity: 0.8;
+    }
+    to {
+      bottom: 100%;
+      transform: translateX(-50px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  /* Botões */
+  a.btn-lg, button.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  a.btn-primary {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+  }
+  
+  a.btn-outline-dark, button.btn-outline-dark {
+    border: 2px solid #222;
+    color: #222;
+    background-color: transparent;
+  }
+  
+  a.btn-outline-dark:hover, button.btn-outline-dark:hover {
+    background-color: #f5f5f5;
+  }
+  
+  a.btn-primary:hover {
+    background-color: #e45a4e;
+  }
+  
+  /* Seção de conteúdo */
+  section {
+    padding: 3.5rem 1rem;
+  }
+  
+  .highlight {
+    background-color: #fff;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Passos - como funciona */
+  .how-it-works {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .step {
+    flex: 1 1 220px;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease;
+    position: relative;
+  }
+  
+  .step:hover {
+    transform: scale(1.03);
+  }
+  
+  .step:hover::after {
+    content: "💖";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.5rem;
+  }
+  
+  .step i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Footer */
+
+  /* Modo escuro */
+  .dark-mode {
+    --bg-main: #1e1e1e;
+    --accent1: #333;
+    --accent2: #444;
+    --primary: #ffcdd2;
+    color: #eee;
+  }
+  
+  .toggle-dark {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+  

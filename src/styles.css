@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-main: #fffaf5;
+  --accent1: #ffe0e0;
+  --accent2: #e0fff2;
+  --primary: #ff6f61;
+  --dark: #222;
+}
+body {
+  background-color: var(--bg-main);
+  background-image: url('https://www.transparenttextures.com/patterns/paw-print.png');
+  font-family: 'Segoe UI', sans-serif;
+  animation: bgScroll 60s linear infinite;
+  transition: background-color 0.3s ease;
+}
+

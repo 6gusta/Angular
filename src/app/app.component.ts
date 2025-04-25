@@ -1,12 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { LoginongComponent } from './loginong/loginong.component';
+import { IndexComponent } from "./index/index.component";
+import { FooterComponent } from "./footer/footer.component";
+
+
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    RouterModule,
+    HeaderComponent,
+    LoginongComponent,
+    IndexComponent,
+    FooterComponent
+],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngularOng';
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
 }
