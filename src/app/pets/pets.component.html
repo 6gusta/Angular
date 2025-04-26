@@ -1,0 +1,47 @@
+
+    <div class="container py-5">
+      <h2 class="text-center mb-5">🐾 Pets disponíveis para adoção</h2>
+      <div id="lista-pets">
+        <div class="pet-card">
+          <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?crop=entropy&cs=tinysrgb&fit=crop&h=300&w=500" alt="Pet fofinho">
+          <h4>Thor</h4>
+          <p>Porte: Médio | Idade: 2 anos | Localização: São Paulo - SP</p>
+          <div class="tags">
+            <span class="tag">Manso</span>
+            <span class="tag">Vacinas em dia</span>
+          </div>
+          <br />
+
+          <a href="/interesse" class="btn-interesse" routerLink="/interesse">Tenho interesse</a>
+        </div>
+      </div>
+    <div class="filter-box">
+      <form class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Cidade/Estado</label>
+          <input type="text" class="form-control" placeholder="Ex: São Paulo - SP" />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Porte</label>
+          <select class="form-select">
+            <option value="">Todos</option>
+            <option value="pequeno">Pequeno</option>
+            <option value="médio">Médio</option>
+            <option value="grande">Grande</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Idade</label>
+          <select class="form-select">
+            <option value="">Todas</option>
+            <option value="filhote">Filhote</option>
+            <option value="adulto">Adulto</option>
+            <option value="idoso">Idoso</option>
+          </select>
+        </div>
+        <div class="col-12 text-end">
+          <button class="btn btn-primary">🔍 Buscar</button>
+        </div>
+      </form>
+    </div>
+

@@ -1,0 +1,148 @@
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1rem 2rem;
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .navbar .btn {
+    border-radius: 50px;
+    font-weight: bold;
+  }
+  
+  .navbar .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+  }
+  
+  .navbar .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pet-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .pet-card:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  }
+  
+  .pet-card .pet-img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  
+  .pet-card .pet-info {
+    padding: 1rem;
+  }
+  
+  .pet-card .pet-info h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .pet-card .pet-info p {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .btn-edit, .btn-delete {
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .btn-edit {
+    background-color: #fff3cd;
+    border: none;
+    color: #856404;
+  }
+  
+  .btn-delete {
+    background-color: #f8d7da;
+    border: none;
+    color: #721c24;
+  }
+  
+  .btn-interessados {
+    border: 1px solid #007bff;
+    background-color: white;
+    color: #007bff;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+  
+  .interessado-card {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .interessado-card:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  
+  .interessado-card h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .interessado-card p {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .interessado-card .badge {
+    background-color: #28a745;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .interessado-card .badge:hover {
+    background-color: #218838;
+  }
+  
+  @media (max-width: 768px) {
+    .pet-card {
+      margin-bottom: 1rem;
+    }
+  
+    .interessado-card {
+      margin-bottom: 1rem;
+    }
+  }
+  

@@ -1,0 +1,4 @@
+body { background-color: #fdfdfd; }
+.tag { background-color: #e0f7fa; color: #007b83; padding: 5px 10px; border-radius: 20px; font-size: 0.85rem; margin-right: 6px; margin-bottom: 6px; display: inline-block; }
+.pet-header { background: linear-gradient(to right, #e0f7fa, #fce4ec); padding: 2rem; border-radius: 1rem; }
+.gallery img { height: 140px; object-fit: cover; border-radius: 10px; }
