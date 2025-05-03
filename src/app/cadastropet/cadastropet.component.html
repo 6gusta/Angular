@@ -1,69 +1,147 @@
 <div class="container">
-    <div class="form-container mx-auto col-md-8">
-      <h2 class="form-title">📋 Cadastrar novo pet para adoção</h2>
-  
-      <form (ngSubmit)="onSubmit()" #petForm="ngForm">
-        <!-- Nome do pet -->
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome do Pet</label>
-          <input name="nome" [(ngModel)]="pet.nome" id="nome" class="form-control" required />
-        </div>
-  
-        <!-- Idade e Sexo -->
-        <div class="row mb-3">
-          <div class="col">
-            <label class="form-label">Idade</label>
-            <input name="idade" [(ngModel)]="pet.idade" class="form-control" required placeholder="Ex: 2 anos" />
-          </div>
-          <div class="col">
-            <label class="form-label">Sexo</label>
-            <select name="sexo" [(ngModel)]="pet.sexo" class="form-select" required>
-              <option value="">Selecione</option>
-              <option>Macho</option>
-              <option>Fêmea</option>
-            </select>
-          </div>
-        </div>
-  
-        <!-- Porte e cidade -->
-        <div class="row mb-3">
-          <div class="col">
-            <label class="form-label">Porte</label>
-            <select name="porte" [(ngModel)]="pet.porte" class="form-select" required>
-              <option value="">Selecione</option>
-              <option>Pequeno</option>
-              <option>Médio</option>
-              <option>Grande</option>
-            </select>
-          </div>
-          <div class="col">
-            <label class="form-label">Cidade/Estado</label>
-            <input name="cidade" [(ngModel)]="pet.cidade" class="form-control" placeholder="Ex: São Paulo - SP" required />
-          </div>
-        </div>
-  
-        <!-- Tags -->
-        <div class="mb-3">
-          <label class="form-label">Tags (características)</label>
-          <input name="tags" [(ngModel)]="pet.tagsText" class="form-control" placeholder="Ex: Dócil, vacinado, castrado..." />
-          <div class="form-text">Separe por vírgula</div>
-        </div>
-  
-        <!-- Sobre o pet -->
-        <div class="mb-3">
-          <label class="form-label">Descrição</label>
-          <textarea name="descricao" [(ngModel)]="pet.descricao" class="form-control" rows="4" placeholder="Fale um pouco sobre o pet..." required></textarea>
-        </div>
-  
-        <!-- Foto -->
-        <div class="mb-4">
-          <label class="form-label">Foto principal</label>
-          <input type="file" (change)="onFileChange($event)" class="form-control" />
-        </div>
-  
-        <!-- Botão -->
-        <button type="submit" [disabled]="petForm.invalid" class="btn btn-success w-100">Cadastrar Pet</button>
-      </form>
+  <div class="form-container mx-auto col-md-8">
+    <h2 class="form-title">📋 Cadastrar novo pet para adoção</h2>
+
+    <!-- Exibe mensagem de erro se houver -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
     </div>
+
+    <form (ngSubmit)="onSubmit()" #petForm="ngForm">
+      <!-- Nome do pet -->
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome do Pet</label>
+        <input
+          name="nome"
+          [(ngModel)]="pet.nome"
+          id="nome"
+          class="form-control"
+          required
+          #nome="ngModel"
+        />
+        <div *ngIf="nome.invalid && nome.touched" class="invalid-feedback">
+          Nome é obrigatório!
+        </div>
+      </div>
+
+      <!-- Idade e Sexo -->
+      <div class="row mb-3">
+        <div class="col">
+          <label class="form-label">Idade</label>
+          <input
+            name="idade"
+            [(ngModel)]="pet.idade"
+            class="form-control"
+            required
+            placeholder="Ex: 2 anos"
+            #idade="ngModel"
+          />
+          <div *ngIf="idade.invalid && idade.touched" class="invalid-feedback">
+            Idade é obrigatória!
+          </div>
+        </div>
+        <div class="col">
+          <label class="form-label">Sexo</label>
+          <select
+            name="sexo"
+            [(ngModel)]="pet.sexo"
+            class="form-select"
+            required
+            #sexo="ngModel"
+          >
+            <option value="">Selecione</option>
+            <option>Macho</option>
+            <option>Fêmea</option>
+          </select>
+          <div *ngIf="sexo.invalid && sexo.touched" class="invalid-feedback">
+            Sexo é obrigatório!
+          </div>
+        </div>
+      </div>
+
+      <!-- Porte e cidade -->
+      <div class="row mb-3">
+        <div class="col">
+          <label class="form-label">Porte</label>
+          <select
+            name="porte"
+            [(ngModel)]="pet.porte"
+            class="form-select"
+            required
+            #porte="ngModel"
+          >
+            <option value="">Selecione</option>
+            <option>Pequeno</option>
+            <option>Médio</option>
+            <option>Grande</option>
+          </select>
+          <div *ngIf="porte.invalid && porte.touched" class="invalid-feedback">
+            Porte é obrigatório!
+          </div>
+        </div>
+        <div class="col">
+          <label class="form-label">Cidade/Estado</label>
+          <input
+            name="cidade"
+            [(ngModel)]="pet.cidade"
+            class="form-control"
+            placeholder="Ex: São Paulo - SP"
+            required
+            #cidade="ngModel"
+          />
+          <div *ngIf="cidade.invalid && cidade.touched" class="invalid-feedback">
+            Cidade/Estado é obrigatório!
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="mb-3">
+        <label class="form-label">Tags (características)</label>
+        <input
+          name="tags"
+          [(ngModel)]="pet.tagsText"
+          class="form-control"
+          placeholder="Ex: Dócil, vacinado, castrado..."
+        />
+        <div class="form-text">Separe por vírgula</div>
+      </div>
+
+      <!-- Descrição do pet -->
+      <div class="mb-3">
+        <label class="form-label">Descrição</label>
+        <textarea
+          name="descricao"
+          [(ngModel)]="pet.descricao"
+          class="form-control"
+          rows="4"
+          placeholder="Fale um pouco sobre o pet..."
+          required
+          #descricao="ngModel"
+        ></textarea>
+        <div *ngIf="descricao.invalid && descricao.touched" class="invalid-feedback">
+          Descrição é obrigatória!
+        </div>
+      </div>
+
+      <!-- Foto -->
+      <div class="mb-4">
+        <label class="form-label">Foto principal</label>
+        <input
+          type="file"
+          (change)="onFileChange($event)"
+          class="form-control"
+        />
+      </div>
+
+      <!-- Botão de submit -->
+      <button
+        type="submit"
+        [disabled]="petForm.invalid"
+        class="btn btn-success w-100"
+      >
+        Cadastrar Pet
+      </button>
+    </form>
   </div>
-  
+</div>

@@ -31,6 +31,17 @@ header {
   position: relative;
   overflow: hidden;
 }
+/* Estilo para o parágrafo com a classe 'lead' */
+p.lead {
+  text-align: center; /* Centraliza o texto */
+  font-size: 1.5rem; /* Ajusta o tamanho da fonte */
+  font-weight: 600; /* Deixa o texto mais negrito */
+  color: var(--primary); /* Define a cor do texto com base na variável 'primary' */
+  margin-bottom: 2rem; /* Espaçamento inferior */
+  letter-spacing: 1px; /* Espaçamento entre as letras para um efeito visual */
+  text-transform: uppercase; /* Transforma o texto em letras maiúsculas */
+}
+
 
 header h1 {
   font-size: 3.2rem;
@@ -75,6 +86,7 @@ a.btn-lg, button.btn-lg {
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  margin: 0.5rem; /* Adiciona o espaçamento entre os botões */
 }
 
 a.btn-primary {

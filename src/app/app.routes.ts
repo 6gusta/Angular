@@ -10,6 +10,7 @@ export const routes: Routes = [
   
   
   
+  
   { path: '', component: HomeComponent }, 
   { path: 'loginong', component: LoginongComponent},
   {path: 'cadastrong', component: CadastroOngComponent},  // Rota para Home
