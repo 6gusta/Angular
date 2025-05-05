@@ -1,43 +1,29 @@
-<!-- Barra superior -->
-<nav class="navbar navbar-light px-4 py-3 mb-4">
-    <span class="navbar-brand mb-0 h4">🐾 Olá, <strong class="text-primary" id="ongNome">ONG</strong></span>
-    <a href="login.html" class="btn btn-outline-danger btn-sm">Sair</a>
-  </nav>
-  
-  <div class="container">
-    <h3 class="mb-4">📂 Meus Pets Cadastrados</h3>
-    <div class="row g-4" id="petsContainer">
-      <!-- Cards de pets inseridos via JS -->
-      <div class="col-md-4">
-        <div class="pet-card">
-          <img src="raca-de-cachorro-muito-popular-no-brasil-1.jpg" class="pet-img" alt="Pet Image">
-          <div class="pet-info">
-            <h5>Thor 🐶</h5>
-            <p>2 anos • Macho • Porte médio • São Paulo - SP</p>
-            <button class="btn btn-edit">Editar</button>
-            <button class="btn btn-delete">Deletar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <hr class="my-5"/>
-  
-    <h3 class="mb-4">👀 Interessados na Adoção</h3>
-    <div id="interessadosContainer">
-      <div class="interessado-card">
-        <h5>Maria Oliveira</h5>
-        <p><strong>Contato:</strong> mariagmail.com</p>
-        <p><strong>Mensagem:</strong> Tenho uma casa grande, amo animais e adoraria dar um lar pro Thor ❤️</p>
-        <a href="https://wa.me/5599999999999?text=Oi!%20Sou%20da%20ONG%20sobre%20a%20adoção%20do%20Thor" target="_blank" class="badge text-bg-success p-2 text-decoration-none">📱 Chamar no WhatsApp</a>
-      </div>
-  
-      <div class="interessado-card">
-        <h5>João Silva</h5>
-        <p><strong>Contato:</strong> joao.silvahotmail.com</p>
-        <p><strong>Mensagem:</strong> Tenho filhos pequenos e estamos procurando um cãozinho como o Thor 🐾</p>
-        <a href="https://wa.me/5588888888888?text=Oi!%20Sou%20da%20ONG%20sobre%20a%20adoção%20do%20Thor" target="_blank" class="badge text-bg-success p-2 text-decoration-none">📱 Chamar no WhatsApp</a>
+<h3>📂 Meus Pets Cadastrados</h3>
+<div class="row g-4">
+  <div class="col-md-4" *ngFor="let pet of pets">
+    <div class="pet-card">
+      <!-- A imagem agora será carregada diretamente da URL que vem do backend -->
+      <img [src]="pet.imagem" class="pet-img" alt="Pet Image">
+      <div class="pet-info">
+        <h5>{{ pet.nome }} 🐶</h5>
+        <p>{{ pet.idade }} anos • {{ pet.sexo }} • Porte {{ pet.porte }} • {{ pet.localizacao }}</p>
+        <button class="btn btn-edit">Editar</button>
+        <button class="btn btn-delete">Deletar</button>
       </div>
     </div>
   </div>
-  
+</div>
+
+<hr class="my-5"/>
+
+<h3>👀 Interessados na Adoção</h3>
+<div *ngFor="let interessado of interessados" class="interessado-card">
+  <h5>{{ interessado.nome }}</h5>
+  <p><strong>Contato:</strong> {{ interessado.contato }}</p>
+  <p><strong>Mensagem:</strong> {{ interessado.mensagem }}</p>
+  <a [href]="'https://wa.me/' + interessado.whatsapp + '?text=Oi!%20Sou%20da%20ONG%20sobre%20a%20adoção%20do%20pet'"
+     target="_blank"
+     class="badge text-bg-success p-2 text-decoration-none">
+     📱 Chamar no WhatsApp
+  </a>
+</div>

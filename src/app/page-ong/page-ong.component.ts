@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AcessoongService } from '../services/acessoong.service';
 
 @Component({
   selector: 'app-page-ong',
-  imports: [],
   templateUrl: './page-ong.component.html',
-  styleUrl: './page-ong.component.css'
+  styleUrls: ['./page-ong.component.css'] // Correção aqui: é "styleUrls" com "s"
 })
-export class PageOngComponent {
+export class PageOngComponent implements OnInit {
+  pets: any[] = [];
+  interessados: any[] = [];
 
+  constructor(private api: AcessoongService) {}
+
+  ngOnInit(): void {
+    this.api.getPets().subscribe(pets => this.pets = pets);
+    this.api.getInteressados().subscribe(ongs => this.interessados = ongs);
+  }
 }

@@ -1,27 +1,43 @@
-<!-- app.component.html -->
+<!-- login.component.html -->
 
+<div class="login-container">
+  <h3 class="login-title">🐾 Entrar como ONG</h3>
 
-<body>
-
-    <div class="login-container">
-      <h3 class="login-title">🐾 Entrar como ONG</h3>
-  
-      <form>
-        <div class="mb-3">
-          <label class="form-label">E-mail</label>
-          <input id="email" type="email" class="form-control" placeholder="email@exemplo.com" required />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Senha</label>
-          <input id="senha" type="password" class="form-control" placeholder="••••••••" required />
-        </div>
-        <button type="submit" class="btn btn-primary w-100" >Entrar</button>
-        <a type="submit" href="/acessong"  class="btn btn-primary w-100"  routerLink="/interesse">Entrar</a>
-      </form>
-  
-      <div class="text-center mt-3">
-        <p class="small">Ainda não tem conta? <a  href="/cadastrong"  routerLink="/cadastrong">Cadastre-se aqui</a></p>
-      </div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">E-mail</label>
+      <input
+        type="email"
+        [(ngModel)]="login.nome"
+        name="email"
+        class="form-control"
+        placeholder="email@exemplo.com"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Senha</label>
+      <input
+        type="password"
+        [(ngModel)]="login.senha"
+        name="senha"
+        class="form-control"
+        placeholder="••••••••"
+        required
+      />
     </div>
 
-</body>
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="text-danger mt-2">
+    {{ errorMessage }}
+  </div>
+
+  <div class="text-center mt-3">
+    <p class="small">
+      Ainda não tem conta?
+      <a routerLink="/cadastrong">Cadastre-se aqui</a>
+    </p>
+  </div>
+</div>
