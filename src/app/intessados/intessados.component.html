@@ -1,75 +1,53 @@
-<div class="container py-5">
-    <div class="pet-header mb-4 text-center shadow-sm">
-      <h1 class="display-5 fw-bold">Thor 🐶</h1>
-      <p class="text-muted">2 anos • Macho • Porte médio • São Paulo - SP</p>
-      <div class="d-flex justify-content-center flex-wrap">
-        <span class="tag">Castrado</span>
-        <span class="tag">Dócil</span>
-        <span class="tag">Adora crianças</span>
-        <span class="tag">Vacinado</span>
-        <span class="tag">Amigável com outros pets</span>
-      </div>
+<div class="container py-5" *ngIf="pet">
+  <!-- Cabeçalho com nome e dados -->
+  <div class="pet-header mb-4 text-center shadow-sm">
+    <h1 class="display-5 fw-bold">{{ pet.nome || 'Pet sem nome' }} 🐶</h1>
+  </div>
+
+  <!-- Imagem e sobre o pet -->
+  <div class="row g-4">
+    <div class="col-md-6">
+      <img
+        [src]="pet.fotoperfil || 'https://via.placeholder.com/300x200'"
+        class="img-fluid rounded shadow"
+        alt="{{ pet.nome || 'Pet' }}"
+      />
     </div>
-    <div class="row g-4">
-      <div class="col-md-6">
-        <img src="" class="img-fluid rounded shadow" alt="Thor" />
-      </div>
-      <div class="col-md-6">
-        <h4>🐾 Sobre mim</h4>
+    <div class="col-md-6">
+      <h4>🐾 Sobre mim</h4>
+
+      <p><strong>Descrição:</strong> {{ pet.descricao || 'Este pet ainda não tem uma descrição cadastrada.' }}</p>
+      <p><strong>Idade:</strong> {{ pet.idade || '?' }} anos</p>
+      <p><strong>Sexo:</strong> {{ pet.sexo || '?' }}</p>
+      <p><strong>Porte:</strong> {{ pet.porte || '?' }}</p>
+      <p><strong>Cidade:</strong> {{ pet.cidade || '' }} - {{ pet.estado || '' }}</p>
+
+      <!-- ONG responsável -->
+      <div class="mt-4">
+        <h5>ONG Responsável:</h5>
         <p>
-          Oi! Eu sou o Thor. Sou um vira-lata caramelo cheio de energia e amor pra dar. 🐕‍🦺  
-          Gosto de brincar com bolinha, correr no quintal e sou ótimo com crianças.  
-          Já estou vacinado e castrado. Só falta você pra me levar pra casa!
+          <strong>{{ pet.ong?.nome || 'ONG Desconhecida' }}</strong><br />
+          {{ pet.ong?.cidade || '-' }} - {{ pet.ong?.estado || '-' }}<br />
+          {{ pet.ong?.email || 'Contato não informado' }}
         </p>
-        <div class="mt-4">
-          <h5>ONG Responsável:</h5>
-          <p><strong>Amigos de Patas</strong><br />São Paulo - SP<br />contatoamigosdepatas.org.br</p>
-        </div>
-        <div class="mt-4 d-flex gap-2 flex-wrap">
-          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#interesseModal">Tenho interesse 💚</button>
-          <a class="btn btn-outline-secondary" href="https://wa.me/5500000000000?text=Oi!%20Quero%20adotar%20o%20Thor!" target="_blank">Compartilhar no WhatsApp</a>
-        </div>
       </div>
-    </div>
-    <div class="mt-5">
-      <h4>📸 Momentos do Thor</h4>
-      <div class="row gallery g-3">
-        <div class="col-6 col-md-3"><img src="raca-de-cachorro-muito-popular-no-brasil-1.jpg" class="w-100" /></div>
-        <div class="col-6 col-md-3"><img src="raca-de-cachorro-muito-popular-no-brasil-1.jpg" class="w-100" /></div>
-        <div class="col-6 col-md-3"><img src="raca-de-cachorro-muito-popular-no-brasil-1.jpg" class="w-100" /></div>
-        <div class="col-6 col-md-3"><img src="raca-de-cachorro-muito-popular-no-brasil-1.jpg" class="w-100" /></div>
+
+      <!-- Botões -->
+      <div class="mt-4 d-flex gap-2 flex-wrap">
+        <a routerLink="/interesseForm" href="/interesseForm" class="btn btn-success">Tenho interesse 💚</a>
+        <a
+          class="btn btn-outline-secondary"
+          [href]="'https://wa.me/55' + (pet.ong?.telefone || '0000000000') + '?text=Oi! Quero adotar o ' + (pet.nome || 'seu pet')"
+          target="_blank"
+        >
+          Compartilhar no WhatsApp
+        </a>
       </div>
     </div>
   </div>
-  <!-- Modal de Interesse -->
-  <div class="modal fade" id="interesseModal" tabindex="-1" aria-labelledby="interesseModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <form class="modal-content" onsubmit="salvarInteresse(event)">
-        <div class="modal-header">
-          <h5 class="modal-title">Quero Adotar o Thor</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Seu nome</label>
-            <input type="text" class="form-control" id="nome" required />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="contato" required />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">WhatsApp</label>
-            <input type="text" class="form-control" id="contato" required />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Mensagem (opcional)</label>
-            <textarea class="form-control" rows="3" id="mensagem"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Enviar Interesse</button>
-        </div>
-      </form>
-    </div>
-  </div>
+</div>
+
+<!-- Caso o pet ainda não tenha carregado -->
+<div class="text-center py-5" *ngIf="!pet">
+  <p>Carregando dados do pet...</p>
+</div>

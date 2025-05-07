@@ -37,6 +37,7 @@ body {
     font-weight: 600;
     color: #333;
     margin-bottom: 1.5rem;
+    margin-left: 40px;
   }
   
   .pet-card {
@@ -45,16 +46,24 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+    margin-left: 200px;
+    margin-bottom: 30px;
+    width: 900px;
+    
+    
+    
   }
+
+  
   
   .pet-card:hover {
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
   }
   
   .pet-card .pet-img {
-    height: 180px;
+    height: 250px;
     object-fit: cover;
-    width: 100%;
+    width: 50%;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
@@ -107,6 +116,7 @@ body {
     margin-bottom: 1.5rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease-in-out;
+    margin-left: 40px;
   }
   
   .interessado-card:hover {

@@ -1,32 +1,55 @@
 <h2 class="text-center mb-5">🐾 Pets disponíveis para adoção</h2>
 <div class="filter-box">
   <form class="row g-3">
-    <div class="col-md-4">
-      <label class="form-label">Cidade/Estado</label>
-      <input type="text" class="form-control" placeholder="Ex: São Paulo - SP" />
+    <!-- Estado -->
+    <div class="col-md-3">
+      <label class="form-label">Estado</label>
+      <select class="form-select" [(ngModel)]="estadoSelecionado" (change)="onUfChange(estadoSelecionado)" name="estado">
+        <option value="">Selecione o estado</option>
+        <option *ngFor="let uf of ufs" [value]="uf.sigla">{{ uf.nome }}</option>
+      </select>
     </div>
-    <div class="col-md-4">
+  
+    <!-- Cidade -->
+    <div class="col-md-3">
+      <label class="form-label">Cidade</label>
+      <select class="form-select" [(ngModel)]="cidadeSelecionada" name="cidade">
+        <option value="">Selecione a cidade</option>
+        <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{ cidade.nome }}</option>
+      </select>
+    </div>
+  
+    <!-- Porte -->
+    <div class="col-md-3">
       <label class="form-label">Porte</label>
-      <select class="form-select">
+      <select class="form-select" [(ngModel)]="porteSelecionado" name="porte">
         <option value="">Todos</option>
         <option value="pequeno">Pequeno</option>
         <option value="médio">Médio</option>
         <option value="grande">Grande</option>
       </select>
     </div>
-    <div class="col-md-4">
+  
+    <!-- Idade -->
+    <div class="col-md-3">
       <label class="form-label">Idade</label>
-      <select class="form-select">
+      <select class="form-select" [(ngModel)]="idadeSelecionada" name="idade">
         <option value="">Todas</option>
         <option value="filhote">Filhote</option>
         <option value="adulto">Adulto</option>
         <option value="idoso">Idoso</option>
       </select>
     </div>
+  
+    <!-- Botão -->
     <div class="col-12 text-end">
-      <button class="btn btn-primary">🔍 Buscar</button>
+    <button class="btn btn-primary" type="button" (click)="filtrarPets()">
+  🔍 Buscar
+</button>
+
     </div>
   </form>
+  
 </div>
 
 
@@ -38,13 +61,13 @@
     <div class="pet-card" *ngFor="let pet of pets">
       <img [src]="pet.fotoperfil || 'https://via.placeholder.com/300x200'" alt="Foto do pet">
       <h4>{{ pet.nome }}</h4>
-      <p>Porte: {{ pet.porte }} | Idade: {{ pet.idade }} anos | Localização: {{ pet.cidade }}</p>
+      <p>Porte: {{ pet.porte }} | Idade: {{ pet.idade }}  | Localização: {{ pet.cidade }}</p>
       <div class="tags">
         <span class="tag" *ngFor="let tag of pet.caracteristicas.split(',')">{{ tag.trim() }}</span>
       </div>
       <br />
-      <!-- Navegação para a página de interesse com o id do pet -->
-      <a [routerLink]="['/interesse', pet.id]" class="btn-interesse">Tenho interesse</a>
+      <a  [routerLink]="['/interessados', pet.id]" class="btn-interesse">Tenho interesse</a>
+
     </div>
   </div>
 </div>

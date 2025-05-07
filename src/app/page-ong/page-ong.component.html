@@ -3,7 +3,7 @@
   <div class="col-md-4" *ngFor="let pet of pets">
     <div class="pet-card">
       <!-- A imagem agora será carregada diretamente da URL que vem do backend -->
-      <img [src]="pet.imagem" class="pet-img" alt="Pet Image">
+      <img [src]="pet.fotoperfil" class="pet-img" alt="Pet Image">
       <div class="pet-info">
         <h5>{{ pet.nome }} 🐶</h5>
         <p>{{ pet.idade }} anos • {{ pet.sexo }} • Porte {{ pet.porte }} • {{ pet.localizacao }}</p>
@@ -19,9 +19,9 @@
 <h3>👀 Interessados na Adoção</h3>
 <div *ngFor="let interessado of interessados" class="interessado-card">
   <h5>{{ interessado.nome }}</h5>
-  <p><strong>Contato:</strong> {{ interessado.contato }}</p>
-  <p><strong>Mensagem:</strong> {{ interessado.mensagem }}</p>
-  <a [href]="'https://wa.me/' + interessado.whatsapp + '?text=Oi!%20Sou%20da%20ONG%20sobre%20a%20adoção%20do%20pet'"
+  <p><strong>Contato:</strong> {{ interessado.email }}</p>
+  <p><strong>Mensagem:</strong> {{ interessado.descricao }}</p>
+  <a [href]="'https://wa.me/' + interessado.telefone + '?text=Oi!%20Sou%20da%20ONG%20sobre%20a%20adoção%20do%20pet'"
      target="_blank"
      class="badge text-bg-success p-2 text-decoration-none">
      📱 Chamar no WhatsApp

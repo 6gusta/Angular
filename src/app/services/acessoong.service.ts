@@ -4,15 +4,19 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AcessoongService {
-  private baseUrl = 'http://localhost:8080';
+  private apiUrl = 'http://localhost:8080/api/pet';
 
   constructor(private http: HttpClient) {}
 
-  getPets(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/pet`);
+  listarPets(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
-  getInteressados(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/ongs`);
+  buscarPetPorId(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  listarInteressados(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:8080/api/ongs');
   }
 }

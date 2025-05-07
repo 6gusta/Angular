@@ -24,7 +24,7 @@ export class PetService {
   registerPet(pet: Pet): Observable<any> {
     const body = {
       nome: pet.nome,
-      idade: Number(pet.idade),  // Transformando idade de string para número
+      idade: pet.idade,// Transformando idade de string para número
       sexo: pet.sexo,
       porte: pet.porte,  // Mantendo o nome "porte" conforme esperado pelo backend
       cidade: pet.cidade,
