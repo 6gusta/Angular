@@ -6,32 +6,9 @@
   --bg-main: #fff;
 }
 
-/* Body */
-body {
-  background-color: var(--bg-main);
-  background-image: url('https://www.transparenttextures.com/patterns/paw-print.png');
-  font-family: 'Segoe UI', sans-serif;
-  animation: bgScroll 60s linear infinite;
-  transition: background-color 0.3s ease;
-}
 
-/* Animação de fundo */
-@keyframes bgScroll {
-  from { background-position: 0 0; }
-  to { background-position: 1000px 1000px; }
-}
 
-/* Header */
-header {
-  background: linear-gradient(to right, var(--accent1), var(--accent2));
-  padding: 3rem 1rem;
-  border-radius: 0 0 2rem 2rem;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-}
-
+/* Cabeçalho */
 header h1 {
   font-size: 3.2rem;
   font-weight: 800;
@@ -56,14 +33,14 @@ header h1 {
 
 @keyframes floatUp {
   from {
-      bottom: 0;
-      transform: translateX(0) scale(1);
-      opacity: 0.8;
+    bottom: 0;
+    transform: translateX(0) scale(1);
+    opacity: 0.8;
   }
   to {
-      bottom: 100%;
-      transform: translateX(-50px) scale(1.5);
-      opacity: 0;
+    bottom: 100%;
+    transform: translateX(-50px) scale(1.5);
+    opacity: 0;
   }
 }
 
@@ -78,7 +55,7 @@ a.btn-lg, button.btn-lg {
 }
 
 a.btn-primary {
-  background-color: #ff6f61;
+  background-color: var(--primary);
   color: white;
   border: none;
 }
@@ -97,70 +74,130 @@ a.btn-primary:hover {
   background-color: #e45a4e;
 }
 
-/* Seção de conteúdo */
+/* Fundo com patinhas */
+.section-patinhas {
+  position: relative;
+  z-index: 0;
+  background-color: var(--bg-main);
+  padding: 4rem 1rem;
+  min-height: 300px;
+}
+
+.section-patinhas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/Fundo.png');
+  background-repeat: repeat;
+  z-index: -1;
+}
+
+/* Layout lado a lado */
+.container-inicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dog-img {
+  max-width: 250px;
+  height: auto;
+}
+
+.textos {
+  max-width: 400px;
+  text-align: left;
+}
+
+.textos h2 {
+  font-size: 2rem;
+  color: #4b2c1a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.textos .slogan {
+  font-size: 1.3rem;
+  color: var(--primary);
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Seção padrão */
 section {
   padding: 3.5rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* Faz com que as seções ocupem toda a altura da tela */
-  flex-direction: column; 
+  flex-direction: column;
   font-size: 1.2rem;
-  /* Organiza os itens verticalmente */
 }
 
-/* Centralizar o conteúdo dentro da div .highlight */
+/* Destaque */
 .highlight {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  justify-content: center; /* Centraliza verticalmente */
-  text-align: center; /* Centraliza o texto */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 2.5rem;
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.06);
   border-radius: 1.25rem;
-  background-color: #fff;
-  width: 100%; /* Para que a largura seja 100% da seção */
-  max-width: 1200px; /* Limita a largura da div para não ficar excessivamente larga */
+  background-color: transparent;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* Passos - como funciona */
+.highlight h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+/* Como funciona */
 .how-it-works {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 3rem; /* Espaço extra acima */
 }
 
 .step {
-  flex: 1 1 220px;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  flex: 1 1 260px;
+  background: #f7b87f;
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   text-align: center;
   transition: transform 0.2s ease;
-  position: relative;
+  color: #222;
 }
 
 .step:hover {
-  transform: scale(1.03);
-}
-
-.step:hover::after {
-  content: "💖";
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  font-size: 1.5rem;
+  transform: scale(1.04);
 }
 
 .step i {
   font-size: 2rem;
-  color: var(--primary);
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.step h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
   margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 /* Modo escuro */
@@ -186,3 +223,63 @@ section {
   cursor: pointer;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Seção "Nossa missão" */
+.section-missao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  background-color: transparent;
+}
+
+.missao-box {
+  background-color: #ffd89e;
+  border-radius: 1.5rem;
+  padding: 3rem 2rem;
+  max-width: 1220px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.04);
+  font-size: 1.1rem;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.missao-box h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.patas {
+  font-size: 3rem;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Seção Mais Adoções */
+.section-mais-adocoes {
+  background-image: url('/assets/Fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  position: relative;
+  z-index: 0;
+}
+
+.mt-2 {
+  font-size: 1.3rem; /* ajuste o valor conforme quiser */
+}
+

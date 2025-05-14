@@ -7,8 +7,12 @@
       <div class="pet-info">
         <h5>{{ pet.nome }} 🐶</h5>
         <p>{{ pet.idade }} anos • {{ pet.sexo }} • Porte {{ pet.porte }} • {{ pet.localizacao }}</p>
-        <button class="btn btn-edit">Editar</button>
-        <button class="btn btn-delete">Deletar</button>
+<button class="btn btn-edit" [routerLink]="['/cadastro', pet.idpet]">Editar</button>
+
+
+    <button  class="btn btn-delete" (click)="deletarPet(pet.idpet)">Deletar</button>
+
+
       </div>
     </div>
   </div>

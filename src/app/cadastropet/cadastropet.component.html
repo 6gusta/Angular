@@ -1,6 +1,8 @@
 <div class="container">
   <div class="form-container mx-auto col-md-8">
-    <h2 class="form-title">📋 Cadastrar novo pet para adoção</h2>
+    <h2 class="form-title">
+      📋 {{ isEditMode ? 'Editar Pet' : 'Cadastrar novo pet para adoção' }}
+    </h2>
 
     <!-- Exibe mensagem de erro se houver -->
     <div *ngIf="errorMessage" class="alert alert-danger">
@@ -140,7 +142,7 @@
         [disabled]="petForm.invalid"
         class="btn btn-success w-100"
       >
-        Cadastrar Pet
+        {{ isEditMode ? 'Atualizar Pet' : 'Cadastrar Pet' }}
       </button>
     </form>
   </div>

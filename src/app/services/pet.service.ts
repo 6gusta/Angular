@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Pet {
+  fotoperfil: any;
   nome: string;
   idade: string;  // será transformado em número antes de enviar
   sexo: string;
@@ -10,32 +11,30 @@ export interface Pet {
   cidade: string;
   tagsText: string;  // será transformado em array de strings
   descricao: string;
-  fotoBase64: string | null;
+
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetService {
-  private apiUrl = 'http://localhost:8080/api/register'; // ajuste se necessário
+  private apiUrl = 'http://localhost:8080/api'; // ajuste se necessário
 
   constructor(private http: HttpClient) {}
 
+  // Método para cadastrar um pet
   registerPet(pet: Pet): Observable<any> {
-    const body = {
-      nome: pet.nome,
-      idade: pet.idade,// Transformando idade de string para número
-      sexo: pet.sexo,
-      porte: pet.porte,  // Mantendo o nome "porte" conforme esperado pelo backend
-      cidade: pet.cidade,
-      caracteristicas: pet.tagsText,  // Transformando tags em array de strings
-      descricao: pet.descricao,
-      fotoperfil: pet.fotoBase64  // Enviando a foto base64
-    };
-
-    return this.http.post(this.apiUrl, body, {
-      responseType: 'text'
-
-    });  // Enviando o objeto para o backend
+    return this.http.post(`${this.apiUrl}/register`, pet, { responseType: 'text' });
   }
+
+  // Método para atualizar um pet
+  updatePet(id: string, pet: Pet): Observable<any> {
+    return this.http.put(`${this.apiUrl}/user/${id}`, pet, { responseType: 'text' });
+  }
+
+  // Método para buscar um pet pelo ID
+ getPetById(id: string): Observable<Pet> {
+  return this.http.get<Pet>(`${this.apiUrl}/pets/${id}`); // ex: /api/1
+}
+
 }

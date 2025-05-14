@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { PetService } from '../services/pet.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Pet, PetService } from '../services/pet.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,65 +12,92 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './cadastropet.component.html',
   styleUrls: ['./cadastropet.component.css'],
 })
-export class CadastropetComponent {
-  pet = {
+export class CadastropetComponent implements OnInit {
+  pet: Pet = {
     nome: '',
     idade: '',
     sexo: '',
     porte: '',
     cidade: '',
-    tagsText: '', // Usando tagsText como na interface
+    tagsText: '',
     descricao: '',
-    fotoBase64: null as string | null // Renomeado para fotoBase64
+    fotoperfil: null
   };
 
   errorMessage: string | null = null;
+  isEditMode: boolean = false;
+  petId: string | null = null;
 
   constructor(
     private router: Router,
-    private petService: PetService
+    private petService: PetService,
+    private route: ActivatedRoute
   ) {}
 
+  ngOnInit(): void {
+    this.petId = this.route.snapshot.paramMap.get('id');
+    if (this.petId) {
+      this.isEditMode = true;
+      this.petService.getPetById(this.petId).subscribe({
+        next: (pet) => {
+          this.pet = pet;
+        },
+        error: () => {
+          this.errorMessage = 'Erro ao buscar pet. Veja o console.';
+        }
+      });
+    }
+  }
+
   onSubmit() {
-    console.log('onSubmit chamado');
-  
-    if (!this.pet.fotoBase64) {
+    if (!this.pet.fotoperfil) {
       this.errorMessage = 'Por favor, adicione uma foto do pet!';
       return;
     }
-  
+
     const petData = {
       nome: this.pet.nome,
-      idade: this.pet.idade, // String mesmo
+      idade: this.pet.idade,
       sexo: this.pet.sexo,
       porte: this.pet.porte,
       cidade: this.pet.cidade,
-      tagsText: this.pet.tagsText, // Agora está correto (usando tagsText)
+      tagsText: this.pet.tagsText,
       descricao: this.pet.descricao,
-      fotoBase64: this.pet.fotoBase64 // Renomeado para fotoBase64
+      fotoperfil: this.pet.fotoperfil
     };
-  
-    console.log('Enviando pet:', petData);
-  
-    this.petService.registerPet(petData).subscribe({
-      next: (response: string) => {
-        alert(response); // Resposta simples, exibe a mensagem
-        this.router.navigate(['/pets']);
-      },
-      error: (err) => {
-        console.error('Erro ao cadastrar pet:', err);
-        this.errorMessage = 'Erro ao cadastrar o pet. Veja o console.';
-      }
-    });
+
+    if (this.isEditMode && this.petId) {
+      this.petService.updatePet(this.petId, petData).subscribe({
+        next: () => {
+          alert('Pet atualizado com sucesso!');
+          this.router.navigate(['/pets']);
+        },
+        error: (err) => {
+          console.error('Erro ao atualizar o pet:', err);
+          this.errorMessage = 'Erro ao atualizar o pet. Veja o console.';
+        }
+      });
+    } else {
+      this.petService.registerPet(petData).subscribe({
+        next: () => {
+          alert('Pet registrado com sucesso!');
+          this.router.navigate(['/pets']);
+        },
+        error: (err) => {
+          console.error('Erro ao cadastrar o pet:', err);
+          this.errorMessage = 'Erro ao cadastrar o pet. Veja o console.';
+        }
+      });
+    }
   }
-  
+
   onFileChange(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = () => {
-      this.pet.fotoBase64 = reader.result as string;
+      this.pet.fotoperfil = reader.result as string;
     };
     reader.readAsDataURL(file);
   }

@@ -14,6 +14,8 @@ export const routes: Routes = [
   { path: 'loginong', component: LoginongComponent },
   { path: 'cadastrong', component: CadastroOngComponent },
   { path: 'cadastro', component: CadastropetComponent },
+   { path: 'cadastro/:id', component: CadastropetComponent },
+
   { path: 'pets', component: PetsComponent },
   { path: 'interessados/:id', component: IntessadosComponent },
 

@@ -55,21 +55,24 @@
 
 
 <div class="container py-5">
- 
-
   <div id="lista-pets">
     <div class="pet-card" *ngFor="let pet of pets">
-      <img [src]="pet.fotoperfil || 'https://via.placeholder.com/300x200'" alt="Foto do pet">
+      <!-- Troquei a URL do placeholder para placehold.co -->
+      <img [src]="pet.fotoperfil || 'https://placehold.co/300x200?text=Sem+Foto'" alt="Foto do pet">
+
       <h4>{{ pet.nome }}</h4>
       <p>Porte: {{ pet.porte }} | Idade: {{ pet.idade }}  | Localização: {{ pet.cidade }}</p>
-      <div class="tags">
-        <span class="tag" *ngFor="let tag of pet.caracteristicas.split(',')">{{ tag.trim() }}</span>
-      </div>
-      <br />
-      <a  [routerLink]="['/interessados', pet.id]" class="btn-interesse">Tenho interesse</a>
 
+      <div class="tags">
+        <!-- Evita erro se pet.caracteristicas for null -->
+        <span class="tag" *ngFor="let tag of (pet.caracteristicas || '').split(',')">{{ tag.trim() }}</span>
+      </div>
+
+      <br />
+      <a [routerLink]="['/interessados', pet.idpet]" class="btn-interesse">Tenho interesse</a>
     </div>
   </div>
 </div>
+
 
 <!-- Filtro de Pets -->

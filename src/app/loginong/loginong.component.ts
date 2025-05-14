@@ -19,6 +19,7 @@ export class LoginongComponent {
   };
 
   errorMessage: string | null = null;
+pet: any;
 
   constructor(private loginService: LoginService, private router: Router) {}
 

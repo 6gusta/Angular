@@ -1,10 +1,20 @@
+
+
 <header>
   <div class="hearts" id="hearts-container"></div>
-  <img src="/assets/logo-viralar.png" alt="Logo da Viralar" style="width: 180px; max-width: 90%; margin-bottom: 1rem;">
-  <h1 class="fw-bold mb-2">Viralar 🐾</h1>
-  <p class="lead mb-4">Transforme vidas com amor. Adote um amigo!</p>
-  <a routerLink="/pets" class="btn btn-primary btn-lg me-2">🔍 Ver pets</a>
-  <a routerLink="/cadastro" class="btn btn-outline-dark btn-lg">📢 Anunciar pet</a>
-  <a routerLink="/loginong" class="btn btn-outline-dark btn-lg">👤 Login ONG</a>
-</header>
 
+  <nav>
+    <!-- Imagem com nome e logo juntos -->
+    <div style="display: flex; align-items: center;">
+      <img src="/assets/Logo.png" alt="Logo com nome Viralar">
+    </div>
+
+    <!-- Navegação -->
+    <div style="display: flex; gap: 1.5rem; align-items: center;">
+      <a routerLink="/" class="fw-bold">Home</a>
+      <a routerLink="/pets" class="fw-bold">Ver Pets</a>
+      <a routerLink="/cadastro" class="fw-bold">Anunciar Pets</a>
+      <a routerLink="/loginong" class="btn btn-primary">Login/Cadastro</a>
+    </div>
+  </nav>
+</header>
