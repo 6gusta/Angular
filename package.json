@@ -17,6 +17,7 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@rollup/rollup-linux-x64-gnu": "^4.40.2",
     "angular-ong": "file:",
     "bootstrap-icons": "^1.11.3",
     "rxjs": "~7.8.0",

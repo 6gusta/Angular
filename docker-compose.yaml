@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  viralar-app:
+    image: johnpaulo0602/viralar-app:latest
+    ports:
+      - '4200:4200'
+    networks:
+      - minha_rede
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=minha_rede"
+        - "traefik.http.routers.viralar-app.rule=Host(`viralar.upestagio.com`)"
+        - "traefik.http.routers.viralar-app.entrypoints=websecure"
+        - "traefik.http.routers.viralar-app.tls.certresolver=letsencryptresolver"
+        - "traefik.http.services.viralar-app.loadbalancer.server.port=4200"
+
+networks:
+  minha_rede:
+    external: true
+    name: minha_rede
