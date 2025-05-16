@@ -9,19 +9,19 @@
       {{ errorMessage }}
     </div>
 
-    <form (ngSubmit)="onSubmit()" #petForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #petForm="ngForm" novalidate>
       <!-- Nome do pet -->
       <div class="mb-3">
         <label for="nome" class="form-label">Nome do Pet</label>
         <input
+          id="nome"
           name="nome"
           [(ngModel)]="pet.nome"
-          id="nome"
           class="form-control"
           required
           #nome="ngModel"
         />
-        <div *ngIf="nome.invalid && nome.touched" class="invalid-feedback">
+        <div *ngIf="nome.invalid && nome.touched" class="invalid-feedback d-block">
           Nome é obrigatório!
         </div>
       </div>
@@ -34,14 +34,15 @@
             name="idade"
             [(ngModel)]="pet.idade"
             class="form-control"
-            required
             placeholder="Ex: 2 anos"
+            required
             #idade="ngModel"
           />
-          <div *ngIf="idade.invalid && idade.touched" class="invalid-feedback">
+          <div *ngIf="idade.invalid && idade.touched" class="invalid-feedback d-block">
             Idade é obrigatória!
           </div>
         </div>
+
         <div class="col">
           <label class="form-label">Sexo</label>
           <select
@@ -55,13 +56,13 @@
             <option>Macho</option>
             <option>Fêmea</option>
           </select>
-          <div *ngIf="sexo.invalid && sexo.touched" class="invalid-feedback">
+          <div *ngIf="sexo.invalid && sexo.touched" class="invalid-feedback d-block">
             Sexo é obrigatório!
           </div>
         </div>
       </div>
 
-      <!-- Porte e cidade -->
+      <!-- Porte, Estado e Cidade -->
       <div class="row mb-3">
         <div class="col">
           <label class="form-label">Porte</label>
@@ -77,22 +78,47 @@
             <option>Médio</option>
             <option>Grande</option>
           </select>
-          <div *ngIf="porte.invalid && porte.touched" class="invalid-feedback">
+          <div *ngIf="porte.invalid && porte.touched" class="invalid-feedback d-block">
             Porte é obrigatório!
           </div>
         </div>
+
         <div class="col">
-          <label class="form-label">Cidade/Estado</label>
-          <input
+          <label class="form-label">Estado</label>
+          <select
+            name="estado"
+            [(ngModel)]="pet.estado"
+            (change)="onEstadoChange()"
+            class="form-select"
+            required
+            #estado="ngModel"
+          >
+            <option value="" disabled>Selecione o estado</option>
+            <option *ngFor="let estado of estados" [value]="estado.sigla">
+              {{ estado.nome }}
+            </option>
+          </select>
+          <div *ngIf="estado.invalid && estado.touched" class="invalid-feedback d-block">
+            Estado é obrigatório.
+          </div>
+        </div>
+
+        <div class="col">
+          <label class="form-label">Cidade</label>
+          <select
             name="cidade"
             [(ngModel)]="pet.cidade"
-            class="form-control"
-            placeholder="Ex: São Paulo - SP"
+            class="form-select"
             required
             #cidade="ngModel"
-          />
-          <div *ngIf="cidade.invalid && cidade.touched" class="invalid-feedback">
-            Cidade/Estado é obrigatório!
+          >
+            <option value="" disabled>Selecione a cidade</option>
+            <option *ngFor="let cidade of cidades" [value]="cidade.nome">
+              {{ cidade.nome }}
+            </option>
+          </select>
+          <div *ngIf="cidade.invalid && cidade.touched" class="invalid-feedback d-block">
+            Cidade é obrigatória.
           </div>
         </div>
       </div>
@@ -121,7 +147,7 @@
           required
           #descricao="ngModel"
         ></textarea>
-        <div *ngIf="descricao.invalid && descricao.touched" class="invalid-feedback">
+        <div *ngIf="descricao.invalid && descricao.touched" class="invalid-feedback d-block">
           Descrição é obrigatória!
         </div>
       </div>

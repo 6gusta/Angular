@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,18 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PetverService {
-  private apiUrl = 'http://localhost:8080/api/pet';
+  private apiUrl = 'http://localhost:8080/api'; // base da API
+
+  constructor(private http: HttpClient) {}
 
   /** Lista todos os pets */
   listarPets(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+    return this.http.get<any[]>(`${this.apiUrl}/pet`); // GET /api/pet
   }
 
-  /** Busca um pet pelo ID */
+  /** Busca pet por ID */
   buscarPetPorId(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/pet/${id}`); // GET /api/pet/{id}
   }
 
-  constructor(private http: HttpClient) { }
+  /** Filtra pets por parâmetros */
+  filtrarPets(params: HttpParams): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/filtra`, { params }); // GET /api/pet/filtra
+  }
 }
-

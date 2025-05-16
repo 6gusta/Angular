@@ -4,6 +4,7 @@ import { Pet, PetService } from '../services/pet.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FiltroService } from '../services/filtro.service';
 
 @Component({
   selector: 'app-cadastropet',
@@ -18,11 +19,15 @@ export class CadastropetComponent implements OnInit {
     idade: '',
     sexo: '',
     porte: '',
+    estado: '',
     cidade: '',
     tagsText: '',
     descricao: '',
     fotoperfil: null
   };
+
+  estados: any[] = [];
+  cidades: any[] = [];
 
   errorMessage: string | null = null;
   isEditMode: boolean = false;
@@ -31,22 +36,65 @@ export class CadastropetComponent implements OnInit {
   constructor(
     private router: Router,
     private petService: PetService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private filtroService: FiltroService  // injeta o serviço
   ) {}
 
   ngOnInit(): void {
+    this.carregarEstados();
+
     this.petId = this.route.snapshot.paramMap.get('id');
     if (this.petId) {
       this.isEditMode = true;
-      this.petService.getPetById(this.petId).subscribe({
-        next: (pet) => {
-          this.pet = pet;
-        },
-        error: () => {
-          this.errorMessage = 'Erro ao buscar pet. Veja o console.';
-        }
-      });
+      this.carregarPetParaEdicao(this.petId);
     }
+  }
+
+  carregarEstados(): void {
+    this.filtroService.getEstados().subscribe({
+      next: (res: any[]) => {
+        this.estados = res;
+      },
+      error: () => {
+        console.error('Erro ao carregar estados');
+      }
+    });
+  }
+
+  carregarCidades(uf: string): void {
+    this.filtroService.getCidades(uf).subscribe({
+      next: (res: any[]) => {
+        this.cidades = res;
+      },
+      error: () => {
+        console.error('Erro ao carregar cidades');
+      }
+    });
+  }
+
+  onEstadoChange(): void {
+    if (this.pet.estado) {
+      this.carregarCidades(this.pet.estado);
+      this.pet.cidade = ''; // limpa a cidade ao trocar estado
+    } else {
+      this.cidades = [];
+      this.pet.cidade = '';
+    }
+  }
+
+  carregarPetParaEdicao(id: string): void {
+    this.petService.getPetById(id).subscribe({
+      next: (pet) => {
+        this.pet = pet;
+
+        if (this.pet.estado) {
+          this.carregarCidades(this.pet.estado);
+        }
+      },
+      error: () => {
+        this.errorMessage = 'Erro ao buscar pet. Veja o console.';
+      }
+    });
   }
 
   onSubmit() {
@@ -61,6 +109,7 @@ export class CadastropetComponent implements OnInit {
       sexo: this.pet.sexo,
       porte: this.pet.porte,
       cidade: this.pet.cidade,
+      estado: this.pet.estado,
       tagsText: this.pet.tagsText,
       descricao: this.pet.descricao,
       fotoperfil: this.pet.fotoperfil

@@ -75,4 +75,28 @@ body {
   background-image: url('https://www.transparenttextures.com/patterns/paw-print.png');
   animation: bgScroll 60s linear infinite;
 }
+select {
+  appearance: none; /* Remove o estilo padrão da setinha do select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  border: 1px solid #ced4da; /* Borda simples igual ao input */
+  border-radius: 0; /* Sem borda arredondada */
+  padding: 0.375rem 0.75rem; /* Espaçamento parecido com input */
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: #fff; /* Fundo branco */
+  color: #495057;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Se quiser remover a seta nativa do select nos navegadores */
+select::-ms-expand {
+  display: none; /* IE10+ */
+}
+
+/* Opcional: adicionar um ícone personalizado ou seta minimalista */
+/* Pode usar background-image, mas aqui deixo simples */
 

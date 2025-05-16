@@ -7,7 +7,7 @@ export interface Ong {
   nome: string;
   email: string;
   senha: string;
-  role: string;
+
 }
 
 @Injectable({
@@ -25,7 +25,7 @@ export class CadastroongService {
       nome: ong.nome,
       email: ong.email,
       senha: ong.senha,
-      role: ong.role
+ 
 
     };
       return this.http.post(this.apiUrl, body, {

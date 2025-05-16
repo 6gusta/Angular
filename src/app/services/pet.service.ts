@@ -8,6 +8,7 @@ export interface Pet {
   idade: string;  // será transformado em número antes de enviar
   sexo: string;
   porte: string;
+  estado: string;
   cidade: string;
   tagsText: string;  // será transformado em array de strings
   descricao: string;

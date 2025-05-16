@@ -14,25 +14,28 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginongComponent {
   login = {
-    nome: '',  // Alterado para 'nome' ao invés de 'email'
+    nome: '',  // pode ser 'email' ou 'nome' dependendo do backend
     senha: ''
   };
 
   errorMessage: string | null = null;
-pet: any;
 
   constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit() {
-    this.loginService.login(this.login).subscribe({
-      next: (res: string) => {
-        alert(res); // "Login bem-sucedido"
-        this.router.navigate(['/acessong']);
-      },
-      error: (err: any) => {
-        console.error(err);
-        this.errorMessage = 'Nome ou senha incorretos';
-      }
-    });
+   this.loginService.login(this.login).subscribe({
+  next: (response) => {
+    const token = response.token;
+    if (token) {
+      localStorage.setItem('token', token);
+      alert('Login realizado com sucesso!');
+      this.router.navigate(['/acessong']);
+    }
+  },
+  error: (err) => {
+    this.errorMessage = err.error || 'Erro ao fazer login.';
+  }
+});
+
   }
 }

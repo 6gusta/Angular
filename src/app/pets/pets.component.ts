@@ -5,6 +5,7 @@ import { FiltroService } from '../services/filtro.service';
 
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-pets',
@@ -18,7 +19,6 @@ export class PetsComponent implements OnInit {
   ufs: any[] = [];
   cidades: any[] = [];
 
-  // Filtros
   estadoSelecionado: any;
   cidadeSelecionada: any;
   porteSelecionado: any;
@@ -54,22 +54,22 @@ export class PetsComponent implements OnInit {
     });
   }
 
-  // ✅ Filtro baseado nos valores selecionados
-  filtrarPets(): void {
-    this.petService.listarPets().subscribe({
-      next: (dados) => {
-        this.pets = dados.filter(pet => {
-          return (
-            (!this.estadoSelecionado || pet.uf === this.estadoSelecionado) &&
-            (!this.cidadeSelecionada || pet.cidade === this.cidadeSelecionada) &&
-            (!this.porteSelecionado || pet.porte === this.porteSelecionado) &&
-            (!this.idadeSelecionada || pet.idadeCategoria === this.idadeSelecionada)
-          );
-        });
-      },
-      error: (erro) => {
-        console.error('Erro ao filtrar pets:', erro);
-      }
-    });
-  }
+  // 🔁 Agora usando a rota /filtra do backend
+ filtrarPets(): void {
+  let params = new HttpParams();
+
+  if (this.estadoSelecionado) params = params.set('estado', this.estadoSelecionado);
+  if (this.cidadeSelecionada) params = params.set('cidade', this.cidadeSelecionada);
+  if (this.porteSelecionado)  params = params.set('porte', this.porteSelecionado);
+  if (this.idadeSelecionada)  params = params.set('idade', this.idadeSelecionada);
+
+  this.petService.filtrarPets(params).subscribe({
+    next: (dados) => {
+      this.pets = dados;
+    },
+    error: (erro) => {
+      console.error('Erro ao filtrar pets:', erro);
+    }
+  });
+}
 }
