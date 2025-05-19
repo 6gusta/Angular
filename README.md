@@ -1,59 +1,52 @@
-# AngularOng
+# Sistema de Adoção de Pets - Frontend Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+Projeto frontend desenvolvido em Angular (versão 19.2.8), que implementa uma SPA para adoção de pets. A aplicação consome uma API RESTful para operações de cadastro, edição, visualização e autenticação.
 
-## Development server
+---
 
-To start a local development server, run:
+## Funcionalidades
 
-```bash
-ng serve
-```
+- Autenticação de usuários com rotas protegidas.
+- Cadastro, edição e visualização detalhada dos pets.
+- Filtros por localização, espécie, porte e idade.
+- Formulários reativos com validação robusta.
+- Navegação responsiva para desktop e dispositivos móveis.
+- Feedback visual para melhor interação.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Tecnologias
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 15+
+- TypeScript
+- RxJS
+- Angular Router
+- Angular Reactive Forms
+- HTML5 e CSS3 responsivo
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Estrutura do Projeto
 
-```bash
-ng generate --help
-```
+- `src/app/components` — Componentes reutilizáveis.
+- `src/app/pages` — Páginas principais.
+- `src/app/services` — Serviços para API.
+- `src/app/models` — Modelos TypeScript.
+- `src/assets` — Recursos estáticos.
 
-## Building
+---
 
-To build the project run:
+## Como rodar
 
-```bash
-ng build
-```
+### Pré-requisitos
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Node.js (v14+)
+- Angular CLI (`npm install -g @angular/cli`)
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Passos
 
 ```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git clone https://github.com/6gusta/Angulardo.git
+cd Angulardo
+npm install
+ng serve --open
