@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AcessoongService {
 
-  private apiUrl = 'https://ong-pets.onrender.com'; // base da API
+  private apiUrl = 'https://ong-pets.onrender.com/api'; // base da API
 
   constructor(private http: HttpClient) {}
 
