@@ -19,7 +19,7 @@ export interface Pet {
   providedIn: 'root'
 })
 export class PetService {
-  private apiUrl = 'https://ong-pets.onrender.com'; 
+  private apiUrl = 'https://ong-pets.onrender.com/register'; 
 
   constructor(private http: HttpClient) {}
 
