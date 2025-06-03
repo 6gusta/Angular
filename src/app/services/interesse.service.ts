@@ -9,7 +9,7 @@ export class InteresseService {
   getPetById(arg0: number) {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'http://localhost:8080/api/Cadastrointer'; // URL da API do backend (ajuste conforme necessário)
+  private apiUrl = 'https://ong-pets.onrender.com'; // URL da API do backend (ajuste conforme necessário)
 
   constructor(private http: HttpClient) {}
 

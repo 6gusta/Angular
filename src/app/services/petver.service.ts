@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PetverService {
-  private apiUrl = 'http://localhost:8080/api'; // base da API
+  private apiUrl = 'https://ong-pets.onrender.com'; // base da API
 
   constructor(private http: HttpClient) {}
 

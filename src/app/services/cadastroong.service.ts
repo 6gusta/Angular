@@ -15,7 +15,7 @@ export interface Ong {
 })
 export class CadastroongService {
 
-  private apiUrl = 'http://localhost:8080/api/admin/registerong'; // corrigido
+  private apiUrl = 'https://ong-pets.onrender.com'; // corrigido
 
   constructor(private http: HttpClient) {}
 
