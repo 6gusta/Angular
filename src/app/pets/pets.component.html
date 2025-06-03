@@ -1,5 +1,14 @@
-<h2 class="text-center mb-5">🐾 Pets disponíveis para adoção</h2>
+
+<section class="section-patinhas">
+    <h2 class="text-center mb-5"> Pets disponíveis <br>
+       para adoção</h2>
+
+  <img src="/assets/Cachorro 2.png" alt="Cachorro Vira-lata" class="dog-img" />
+ 
+</section>
+  
 <div class="filter-box">
+   <h2 class="text-center mb-5">Busque seu amigo </h2>
   <form class="row g-3">
     <!-- Estado -->
     <div class="col-md-3">
@@ -61,16 +70,14 @@
 
 
 <div class="container py-5">
-  <div id="lista-pets">
+  <div id="lista-pets" class="cards-container">
     <div class="pet-card" *ngFor="let pet of pets">
-      <!-- Troquei a URL do placeholder para placehold.co -->
       <img [src]="pet.fotoperfil || 'https://placehold.co/300x200?text=Sem+Foto'" alt="Foto do pet">
 
       <h4>{{ pet.nome }}</h4>
       <p>Porte: {{ pet.porte }} | Idade: {{ pet.idade }}  | Localização: {{ pet.cidade }}</p>
 
       <div class="tags">
-        <!-- Evita erro se pet.caracteristicas for null -->
         <span class="tag" *ngFor="let tag of (pet.caracteristicas || '').split(',')">{{ tag.trim() }}</span>
       </div>
 
@@ -79,6 +86,5 @@
     </div>
   </div>
 </div>
-
 
 <!-- Filtro de Pets -->

@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FiltroService } from '../services/filtro.service';
 
+
+
 @Component({
   selector: 'app-cadastropet',
   standalone: true,
