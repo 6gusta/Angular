@@ -12,29 +12,25 @@ export interface Pet {
   cidade: string;
   tagsText: string;  
   descricao: string;
-
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetService {
-  private apiUrl = 'https://ong-pets.onrender.com/api/register'; 
+  private baseUrl = 'https://ong-pets.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
-
   registerPet(pet: Pet): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, pet, { responseType: 'text' });
+    return this.http.post(`${this.baseUrl}/register`, pet, { responseType: 'text' });
   }
 
   updatePet(id: string, pet: Pet): Observable<any> {
-    return this.http.put(`${this.apiUrl}/user/${id}`, pet, { responseType: 'text' });
+    return this.http.put(`${this.baseUrl}/user/${id}`, pet, { responseType: 'text' });
   }
 
-
- getPetById(id: string): Observable<Pet> {
-  return this.http.get<Pet>(`${this.apiUrl}/pets/${id}`); 
-}
-
+  getPetById(id: string): Observable<Pet> {
+    return this.http.get<Pet>(`${this.baseUrl}/pets/${id}`);
+  }
 }
