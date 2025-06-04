@@ -12,17 +12,16 @@ export class PetverService {
 
   /** Lista todos os pets */
   listarPets(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/pet`);
+    return this.http.get<any[]>(`${this.apiUrl}/pet`); // GET /api/pet
   }
 
   /** Busca pet por ID */
-  buscarPetPorId(id: number | string): Observable<any> {
-    const parsedId = Number(String(id).split(':')[0]); // ✅ Garante que mesmo se vier '1:1', vira 1
-    return this.http.get<any>(`${this.apiUrl}/pet/${parsedId}`);
+  buscarPetPorId(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/pet/${id}`); // GET /api/pet/{id}
   }
 
   /** Filtra pets por parâmetros */
   filtrarPets(params: HttpParams): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/filtra`, { params });
+    return this.http.get<any[]>(`${this.apiUrl}/filtra`, { params }); // GET /api/pet/filtra
   }
 }
