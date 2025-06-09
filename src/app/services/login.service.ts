@@ -11,7 +11,8 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'https://ong-pets.onrender.com/api';
+  //private apiUrl = 'https://ong-pets.onrender.com/api';
+   private apiUrl = 'http://localhost:8080/api/login';
 
   constructor(private http: HttpClient) {}
 

@@ -18,7 +18,8 @@ export interface Pet {
   providedIn: 'root'
 })
 export class PetService {
-  private baseUrl = 'https://ong-pets.onrender.com/api';
+  //private baseUrl = 'https://ong-pets.onrender.com/api';
+    private baseUrl = 'http://localhost:8080/api'; 
 
   constructor(private http: HttpClient) {}
 

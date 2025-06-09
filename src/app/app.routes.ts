@@ -8,6 +8,7 @@ import { PetsComponent } from './pets/pets.component';
 import { IntessadosComponent } from './intessados/intessados.component';
 import { PageOngComponent } from './page-ong/page-ong.component';
 import { FormularioInteressadoComponent } from './formulario-interessado/formulario-interessado.component';
+import { ObrigadopelointeresseComponent } from './obrigadopelointeresse/obrigadopelointeresse.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,7 @@ export const routes: Routes = [
   { path: 'cadastrong', component: CadastroOngComponent },
   { path: 'cadastro', component: CadastropetComponent },
    { path: 'cadastro/:id', component: CadastropetComponent },
-
+{path: 'obrigado', component: ObrigadopelointeresseComponent},
   { path: 'pets', component: PetsComponent },
   { path: 'interessados/:id', component: IntessadosComponent },
 

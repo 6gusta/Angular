@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GosteiService {
-  private apiUrl = 'https://ong-pets.onrender.com/api';
+  //private apiUrl = 'https://ong-pets.onrender.com/api';
+   private apiUrl = 'http://localhost:8080/api/pets';
 
   constructor(private http: HttpClient) {}
 
